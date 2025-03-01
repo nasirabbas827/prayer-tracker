@@ -19,7 +19,7 @@ $result_missed = $conn->query($sql_missed);
 $total_missed_prayers = $result_missed->fetch_assoc()['total_missed'];
 
 // Fetch total number of Qaza prayers
-$sql_qaza = "SELECT SUM(count) as total_qaza FROM qaza_prayers";
+$sql_qaza = "SELECT COUNT(*) as total_qaza FROM prayers WHERE status = 'qaza'";
 $result_qaza = $conn->query($sql_qaza);
 $total_qaza_prayers = $result_qaza->fetch_assoc()['total_qaza'];
 ?>

@@ -54,6 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update_guidance"])) {
     <?php include('admin_navbar.php'); ?>
 
     <div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+
         <h1>Edit Prayer Guidance</h1>
         <?php if (isset($error_message)): ?>
             <div class="alert alert-danger"><?php echo $error_message; ?></div>
@@ -74,6 +77,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update_guidance"])) {
             </div>
             <button type="submit" class="btn btn-success" name="update_guidance">Update Guidance</button>
         </form>
+    </div>
+    </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

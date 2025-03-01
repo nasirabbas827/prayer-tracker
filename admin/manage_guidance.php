@@ -63,6 +63,9 @@ $result_guidance = $conn->query($sql_guidance);
     <?php include('admin_navbar.php'); ?>
 
     <div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+
         <h1>Manage Prayer Guidance</h1>
 
         <!-- Success/Error Message -->
@@ -90,6 +93,8 @@ $result_guidance = $conn->query($sql_guidance);
                 </div>
                 <button type="submit" class="btn btn-primary" name="add_guidance">Add Guidance</button>
             </form>
+        </div>
+        </div>
         </div>
 
         <!-- Display All Prayer Guidance -->

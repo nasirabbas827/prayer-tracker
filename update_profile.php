@@ -61,63 +61,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
-    <style>
-        /* Custom styles for the profile update page */
-        body {
-            background-color: #f4f6f9;
-            font-family: Arial, sans-serif;
-        }
 
-        .container {
-            max-width: 800px;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-        }
-
-        h2 {
-            color: #007bff;
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-
-        .form-group label {
-            font-weight: bold;
-        }
-
-        .form-control {
-            border-radius: 8px;
-            box-shadow: none;
-            transition: all 0.3s ease;
-        }
-
-        .form-control:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-
-        button {
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            padding: 10px 20px;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .alert {
-            margin-top: 20px;
-        }
-    </style>
 </head>
 
 <body>
     <?php include('navbar.php'); ?>
 
-    <div class="container">
+    <div class="container mt-5 mb-5">
+    <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+
         <h2>Update Profile</h2>
 
         <?php if (isset($success_message)) { ?>
@@ -151,6 +104,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <button type="submit" class="btn btn-primary">Update Profile</button>
         </form>
+    </div>
+    </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

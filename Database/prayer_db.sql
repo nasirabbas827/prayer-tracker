@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2024 at 06:55 AM
+-- Generation Time: Mar 01, 2025 at 08:17 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -78,6 +78,16 @@ CREATE TABLE `prayers` (
   `logged_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `prayers`
+--
+
+INSERT INTO `prayers` (`prayer_id`, `user_id`, `prayer_name`, `date`, `status`, `logged_at`) VALUES
+(21, 3, 'Fajr', '2025-03-01', 'completed', '2025-03-01 11:53:41'),
+(22, 3, 'Dhuhr', '2025-03-01', 'qaza', '2025-03-01 11:53:43'),
+(23, 3, 'Maghrib', '2025-03-01', 'missed', '2025-03-01 11:53:45'),
+(24, 3, 'Isha', '2025-03-01', 'completed', '2025-03-01 12:03:26');
+
 -- --------------------------------------------------------
 
 --
@@ -104,30 +114,6 @@ INSERT INTO `prayer_guidance` (`guidance_id`, `title`, `description`, `video_url
 -- --------------------------------------------------------
 
 --
--- Table structure for table `qaza_prayers`
---
-
-CREATE TABLE `qaza_prayers` (
-  `qaza_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `prayer_name` enum('Fajr','Dhuhr','Asr','Maghrib','Isha') NOT NULL,
-  `count` int(11) DEFAULT 0,
-  `last_updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `qaza_prayers`
---
-
-INSERT INTO `qaza_prayers` (`qaza_id`, `user_id`, `prayer_name`, `count`, `last_updated_at`) VALUES
-(1, 3, 'Maghrib', 0, '2024-11-27 09:54:14'),
-(2, 3, 'Asr', 0, '2024-11-27 09:54:14'),
-(3, 3, 'Dhuhr', 0, '2024-11-27 09:54:14'),
-(4, 3, 'Fajr', 0, '2024-11-27 09:56:32');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -148,7 +134,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `age`, `full_name`, `bio`, `status`) VALUES
-(3, 'nasir', '$2y$10$a/SgsGBswoo1YfNrJd./p.Jqey.MDYC.QoLsyJGas3H5cdesUPvjq', 'nasiryt.827@gmail.com', '9853', 23, 'NASIR ABBAS', 'software developer', 'inactive'),
+(3, 'nasir', '$2y$10$a/SgsGBswoo1YfNrJd./p.Jqey.MDYC.QoLsyJGas3H5cdesUPvjq', 'nasiryt.827@gmail.com', '9853', 23, 'NASIR ABBAS', 'software developer', 'active'),
 (4, 'abbas12', '$2y$10$Gd4HpAg44BiF8suT7q1T5OvUTR90pkfhyBpIB1GDbh/jvGzLrke/C', 'abbas@gmail.com', '43443', 23, '', NULL, 'active');
 
 --
@@ -181,13 +167,6 @@ ALTER TABLE `prayer_guidance`
   ADD PRIMARY KEY (`guidance_id`);
 
 --
--- Indexes for table `qaza_prayers`
---
-ALTER TABLE `qaza_prayers`
-  ADD PRIMARY KEY (`qaza_id`),
-  ADD UNIQUE KEY `user_id` (`user_id`,`prayer_name`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -213,19 +192,13 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `prayers`
 --
 ALTER TABLE `prayers`
-  MODIFY `prayer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `prayer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `prayer_guidance`
 --
 ALTER TABLE `prayer_guidance`
   MODIFY `guidance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `qaza_prayers`
---
-ALTER TABLE `qaza_prayers`
-  MODIFY `qaza_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -242,12 +215,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `prayers`
   ADD CONSTRAINT `prayers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `qaza_prayers`
---
-ALTER TABLE `qaza_prayers`
-  ADD CONSTRAINT `qaza_prayers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
